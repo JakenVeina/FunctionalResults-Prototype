@@ -24,7 +24,7 @@ namespace Demo
         }
 
         public Task<OperationResult<long>> CreateInfractionAsync(InfractionType type, ulong guildId, ulong subjectId, string reason, TimeSpan? duration)
-            => OperationResult.Start
+            => Operation.Start
                 // Validation
                 .Require(!string.IsNullOrWhiteSpace(reason),
                     () => new InfractionReasonMissingError())
@@ -90,10 +90,10 @@ namespace Demo
                     using (var deleteTransaction = await InfractionRepository.BeginDeleteTransactionAsync())
                     using (var createTransaction = await InfractionRepository.BeginCreateTransactionAsync())
                     {
-                        return await OperationResult.Start
+                        return await Operation.Start
                             // Delete existing active Mute/Ban infractions, if any, so we can create a new one
                             .BranchWhenAsync((type == InfractionType.Mute) || (type == InfractionType.Ban),
-                                () => OperationResult.Start
+                                () => Operation.Start
                                     .ContinueAsync(InfractionRepository.SearchIdsAsync(new InfractionSearchCriteria()
                                     {
                                         GuildId = guildId,
