@@ -2,14 +2,8 @@
 
 namespace FunctionalResults
 {
-    public class OperationResult<T> : OperationResult
+    public partial class OperationResult<T> : OperationResult
     {
-        public static OperationResult<T> FromResult(T value)
-            => new OperationResult<T>(value);
-
-        new public static OperationResult<T> FromError(IOperationError error)
-            => new OperationResult<T>(error);
-
         internal protected OperationResult(T value)
 			: base()
 		{
