@@ -11,7 +11,7 @@ namespace Demo
 
         Task<IRepositoryTransaction> BeginDeleteTransactionAsync();
 
-        Task<IOperationResult<long>> CreateAsync(InfractionCreationData data);
+        Task<OperationResult<long>> CreateAsync(InfractionCreationData data);
 
         Task<IReadOnlyCollection<long>> SearchIdsAsync(InfractionSearchCriteria searchCriteria);
 

@@ -23,7 +23,7 @@ namespace Demo
             UserService = userService;
         }
 
-        public Task<IOperationResult<long>> CreateInfractionAsync(InfractionType type, ulong guildId, ulong subjectId, string reason, TimeSpan? duration)
+        public Task<OperationResult<long>> CreateInfractionAsync(InfractionType type, ulong guildId, ulong subjectId, string reason, TimeSpan? duration)
             => OperationResult.Start
                 // Validation
                 .Require(!string.IsNullOrWhiteSpace(reason),

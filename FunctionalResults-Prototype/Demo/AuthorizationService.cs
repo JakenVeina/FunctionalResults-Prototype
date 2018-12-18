@@ -8,8 +8,8 @@ namespace Demo
     {
         ulong? CurrentUserId { get; }
 
-        Task<IOperationResult> RequireClaimsAsync(params AuthorizationClaim[] claims);
+        Task<OperationResult> RequireClaimsAsync(params AuthorizationClaim[] claims);
 
-        Task<IOperationResult> RequireRankOverSubjectAsync(ulong guildId, ulong subjectId);
+        Task<OperationResult> RequireRankOverSubjectAsync(ulong guildId, ulong subjectId);
     }
 }

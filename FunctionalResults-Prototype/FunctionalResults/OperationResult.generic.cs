@@ -2,18 +2,12 @@
 
 namespace FunctionalResults
 {
-	public interface IOperationResult<T> : IOperationResult
+    public class OperationResult<T> : OperationResult
     {
-		T Value { get; }
-    }
-
-    public class OperationResult<T> : OperationResult, IOperationResult<T>
-    {
-        public static IOperationResult<T> FromResult(T value)
+        public static OperationResult<T> FromResult(T value)
             => new OperationResult<T>(value);
 
-        new 
-            public static IOperationResult<T> FromError(IOperationError error)
+        new public static OperationResult<T> FromError(IOperationError error)
             => new OperationResult<T>(error);
 
         internal protected OperationResult(T value)
@@ -28,7 +22,6 @@ namespace FunctionalResults
 		public T Value
 			=> IsSuccess ? _value
                 : throw new InvalidOperationException("Cannot retrieve result data for a failed operation");
-
         private readonly T _value;
     }
 }

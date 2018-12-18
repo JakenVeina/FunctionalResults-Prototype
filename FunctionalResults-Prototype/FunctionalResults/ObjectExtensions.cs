@@ -10,10 +10,10 @@ namespace FunctionalResults
                 ? throw new ArgumentNullException(valueName)
                 : value;
 
-        public static IOperationResult<T> AsSuccess<T>(this T value)
+        public static OperationResult<T> AsSuccess<T>(this T value)
             => OperationResult<T>.FromResult(value);
 
-        public static async Task<IOperationResult<T>> AsSuccessAsync<T>(this Task<T> value)
+        public static async Task<OperationResult<T>> AsSuccessAsync<T>(this Task<T> value)
             => OperationResult<T>.FromResult(await value);
     }
 }

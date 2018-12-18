@@ -6,6 +6,6 @@ namespace Demo
 {
     public interface IUserService
     {
-        Task<IOperationResult<IGuildUser>> GetGuildUser(ulong guildId, ulong userId);
+        Task<OperationResult<IGuildUser>> GetGuildUser(ulong guildId, ulong userId);
     }
 }

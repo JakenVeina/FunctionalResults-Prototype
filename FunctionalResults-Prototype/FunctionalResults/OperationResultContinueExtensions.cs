@@ -5,187 +5,187 @@ namespace FunctionalResults
 {
     public static class OperationResultContinueExtensions
     {
-        public static IOperationResult Continue(this IOperationResult prevOperationResult, IOperationResult nextOperationResult)
+        public static OperationResult Continue(this OperationResult prevOperationResult, OperationResult nextOperationResult)
             => nextOperationResult;
 
-        public static IOperationResult Continue(this IOperationResult prevOperationResult, Func<IOperationResult> nextOperation)
+        public static OperationResult Continue(this OperationResult prevOperationResult, Func<OperationResult> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke();
 
-        public static IOperationResult Continue(this IOperationResult prevOperationResult, Func<IOperationResult, IOperationResult> nextOperation)
+        public static OperationResult Continue(this OperationResult prevOperationResult, Func<OperationResult, OperationResult> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke(prevOperationResult.AssertNotNull(nameof(prevOperationResult)));
 
-        public static IOperationResult<TNext> Continue<TNext>(this IOperationResult prevOperationResult, IOperationResult<TNext> nextOperationResult)
+        public static OperationResult<TNext> Continue<TNext>(this OperationResult prevOperationResult, OperationResult<TNext> nextOperationResult)
             => nextOperationResult;
 
-        public static IOperationResult<TNext> Continue<TNext>(this IOperationResult prevOperationResult, Func<IOperationResult<TNext>> nextOperation)
+        public static OperationResult<TNext> Continue<TNext>(this OperationResult prevOperationResult, Func<OperationResult<TNext>> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke();
 
-        public static IOperationResult<TNext> Continue<TNext>(this IOperationResult prevOperationResult, Func<IOperationResult, IOperationResult<TNext>> nextOperation)
+        public static OperationResult<TNext> Continue<TNext>(this OperationResult prevOperationResult, Func<OperationResult, OperationResult<TNext>> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke(prevOperationResult.AssertNotNull(nameof(prevOperationResult)));
 
-        public static IOperationResult Continue<TPrev>(this IOperationResult<TPrev> prevOperationResult, IOperationResult nextOperationResult)
+        public static OperationResult Continue<TPrev>(this OperationResult<TPrev> prevOperationResult, OperationResult nextOperationResult)
             => nextOperationResult;
 
-        public static IOperationResult Continue<TPrev>(this IOperationResult<TPrev> prevOperationResult, Func<IOperationResult> nextOperation)
+        public static OperationResult Continue<TPrev>(this OperationResult<TPrev> prevOperationResult, Func<OperationResult> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke();
 
-        public static IOperationResult Continue<TPrev>(this IOperationResult<TPrev> prevOperationResult, Func<IOperationResult<TPrev>, IOperationResult> nextOperation)
+        public static OperationResult Continue<TPrev>(this OperationResult<TPrev> prevOperationResult, Func<OperationResult<TPrev>, OperationResult> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke(prevOperationResult.AssertNotNull(nameof(prevOperationResult)));
 
-        public static IOperationResult<TNext> Continue<TPrev, TNext>(this IOperationResult<TPrev> prevOperationResult, IOperationResult<TNext> nextOperationResult)
+        public static OperationResult<TNext> Continue<TPrev, TNext>(this OperationResult<TPrev> prevOperationResult, OperationResult<TNext> nextOperationResult)
             => nextOperationResult;
 
-        public static IOperationResult<TNext> Continue<TPrev, TNext>(this IOperationResult<TPrev> prevOperationResult, Func<IOperationResult<TNext>> nextOperation)
+        public static OperationResult<TNext> Continue<TPrev, TNext>(this OperationResult<TPrev> prevOperationResult, Func<OperationResult<TNext>> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke();
 
-        public static IOperationResult<TNext> Continue<TPrev, TNext>(this IOperationResult<TPrev> prevOperationResult, Func<IOperationResult<TPrev>, IOperationResult<TNext>> nextOperation)
+        public static OperationResult<TNext> Continue<TPrev, TNext>(this OperationResult<TPrev> prevOperationResult, Func<OperationResult<TPrev>, OperationResult<TNext>> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke(prevOperationResult.AssertNotNull(nameof(prevOperationResult)));
 
-        public static Task<IOperationResult> ContinueAsync(this IOperationResult prevOperationResult, Task<IOperationResult> nextOperationResult)
+        public static Task<OperationResult> ContinueAsync(this OperationResult prevOperationResult, Task<OperationResult> nextOperationResult)
             => nextOperationResult;
 
-        public static Task<IOperationResult> ContinueAsync(this IOperationResult prevOperationResult, AsyncFunc<IOperationResult> nextOperation)
+        public static Task<OperationResult> ContinueAsync(this OperationResult prevOperationResult, AsyncFunc<OperationResult> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke();
 
-        public static Task<IOperationResult> ContinueAsync(this IOperationResult prevOperationResult, AsyncFunc<IOperationResult, IOperationResult> nextOperation)
+        public static Task<OperationResult> ContinueAsync(this OperationResult prevOperationResult, AsyncFunc<OperationResult, OperationResult> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke(prevOperationResult.AssertNotNull(nameof(prevOperationResult)));
 
-        public static Task<IOperationResult<TNext>> ContinueAsync<TNext>(this IOperationResult prevOperationResult, Task<IOperationResult<TNext>> nextOperationResult)
+        public static Task<OperationResult<TNext>> ContinueAsync<TNext>(this OperationResult prevOperationResult, Task<OperationResult<TNext>> nextOperationResult)
             => nextOperationResult;
 
-        public static Task<IOperationResult<TNext>> ContinueAsync<TNext>(this IOperationResult prevOperationResult, AsyncFunc<IOperationResult<TNext>> nextOperation)
+        public static Task<OperationResult<TNext>> ContinueAsync<TNext>(this OperationResult prevOperationResult, AsyncFunc<OperationResult<TNext>> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke();
 
-        public static Task<IOperationResult<TNext>> ContinueAsync<TNext>(this IOperationResult prevOperationResult, AsyncFunc<IOperationResult, IOperationResult<TNext>> nextOperation)
+        public static Task<OperationResult<TNext>> ContinueAsync<TNext>(this OperationResult prevOperationResult, AsyncFunc<OperationResult, OperationResult<TNext>> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke(prevOperationResult.AssertNotNull(nameof(prevOperationResult)));
 
-        public static Task<IOperationResult> ContinueAsync<TPrev>(this IOperationResult<TPrev> prevOperationResult, Task<IOperationResult> nextOperationResult)
+        public static Task<OperationResult> ContinueAsync<TPrev>(this OperationResult<TPrev> prevOperationResult, Task<OperationResult> nextOperationResult)
             => nextOperationResult;
 
-        public static Task<IOperationResult> ContinueAsync<TPrev>(this IOperationResult<TPrev> prevOperationResult, AsyncFunc<IOperationResult> nextOperation)
+        public static Task<OperationResult> ContinueAsync<TPrev>(this OperationResult<TPrev> prevOperationResult, AsyncFunc<OperationResult> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke();
 
-        public static Task<IOperationResult> ContinueAsync<TPrev>(this IOperationResult<TPrev> prevOperationResult, AsyncFunc<IOperationResult<TPrev>, IOperationResult> nextOperation)
+        public static Task<OperationResult> ContinueAsync<TPrev>(this OperationResult<TPrev> prevOperationResult, AsyncFunc<OperationResult<TPrev>, OperationResult> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke(prevOperationResult.AssertNotNull(nameof(prevOperationResult)));
 
-        public static Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this IOperationResult<TPrev> prevOperationResult, Task<IOperationResult<TNext>> nextOperationResult)
+        public static Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this OperationResult<TPrev> prevOperationResult, Task<OperationResult<TNext>> nextOperationResult)
             => nextOperationResult;
 
-        public static Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this IOperationResult<TPrev> prevOperationResult, AsyncFunc<IOperationResult<TNext>> nextOperation)
+        public static Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this OperationResult<TPrev> prevOperationResult, AsyncFunc<OperationResult<TNext>> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke();
 
-        public static Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this IOperationResult<TPrev> prevOperationResult, AsyncFunc<IOperationResult<TPrev>, IOperationResult<TNext>> nextOperation)
+        public static Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this OperationResult<TPrev> prevOperationResult, AsyncFunc<OperationResult<TPrev>, OperationResult<TNext>> nextOperation)
             => nextOperation.AssertNotNull(nameof(nextOperation))
                 .Invoke(prevOperationResult.AssertNotNull(nameof(prevOperationResult)));
 
-        public static async Task<IOperationResult> ContinueAsync(this Task<IOperationResult> prevOperationResult, IOperationResult nextOperationResult)
+        public static async Task<OperationResult> ContinueAsync(this Task<OperationResult> prevOperationResult, OperationResult nextOperationResult)
             => (await prevOperationResult)
                 .Continue(nextOperationResult);
 
-        public static async Task<IOperationResult> ContinueAsync(this Task<IOperationResult> prevOperationResult, Func<IOperationResult> nextOperation)
+        public static async Task<OperationResult> ContinueAsync(this Task<OperationResult> prevOperationResult, Func<OperationResult> nextOperation)
             => (await prevOperationResult)
                 .Continue(nextOperation);
 
-        public static async Task<IOperationResult> ContinueAsync(this Task<IOperationResult> prevOperationResult, Func<IOperationResult, IOperationResult> nextOperation)
+        public static async Task<OperationResult> ContinueAsync(this Task<OperationResult> prevOperationResult, Func<OperationResult, OperationResult> nextOperation)
             => (await prevOperationResult)
                 .Continue(nextOperation);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TNext>(this Task<IOperationResult> prevOperationResult, IOperationResult<TNext> nextOperationResult)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TNext>(this Task<OperationResult> prevOperationResult, OperationResult<TNext> nextOperationResult)
             => (await prevOperationResult)
                 .Continue(nextOperationResult);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TNext>(this Task<IOperationResult> prevOperationResult, Func<IOperationResult<TNext>> nextOperation)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TNext>(this Task<OperationResult> prevOperationResult, Func<OperationResult<TNext>> nextOperation)
             => (await prevOperationResult)
                 .Continue(nextOperation);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TNext>(this Task<IOperationResult> prevOperationResult, Func<IOperationResult, IOperationResult<TNext>> nextOperation)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TNext>(this Task<OperationResult> prevOperationResult, Func<OperationResult, OperationResult<TNext>> nextOperation)
             => (await prevOperationResult)
                 .Continue(nextOperation);
 
-        public static async Task<IOperationResult> ContinueAsync<TPrev>(this Task<IOperationResult<TPrev>> prevOperationResult, IOperationResult nextOperationResult)
+        public static async Task<OperationResult> ContinueAsync<TPrev>(this Task<OperationResult<TPrev>> prevOperationResult, OperationResult nextOperationResult)
             => (await prevOperationResult)
                 .Continue(nextOperationResult);
 
-        public static async Task<IOperationResult> ContinueAsync<TPrev>(this Task<IOperationResult<TPrev>> prevOperationResult, Func<IOperationResult> nextOperation)
+        public static async Task<OperationResult> ContinueAsync<TPrev>(this Task<OperationResult<TPrev>> prevOperationResult, Func<OperationResult> nextOperation)
             => (await prevOperationResult)
                 .Continue(nextOperation);
 
-        public static async Task<IOperationResult> ContinueAsync<TPrev>(this Task<IOperationResult<TPrev>> prevOperationResult, Func<IOperationResult<TPrev>, IOperationResult> nextOperation)
+        public static async Task<OperationResult> ContinueAsync<TPrev>(this Task<OperationResult<TPrev>> prevOperationResult, Func<OperationResult<TPrev>, OperationResult> nextOperation)
             => (await prevOperationResult)
                 .Continue(nextOperation);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<IOperationResult<TPrev>> prevOperationResult, IOperationResult<TNext> nextOperationResult)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<OperationResult<TPrev>> prevOperationResult, OperationResult<TNext> nextOperationResult)
             => (await prevOperationResult)
                 .Continue(nextOperationResult);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<IOperationResult<TPrev>> prevOperationResult, Func<IOperationResult<TNext>> nextOperation)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<OperationResult<TPrev>> prevOperationResult, Func<OperationResult<TNext>> nextOperation)
             => (await prevOperationResult)
                 .Continue(nextOperation);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<IOperationResult<TPrev>> prevOperationResult, Func<IOperationResult<TPrev>, IOperationResult<TNext>> nextOperation)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<OperationResult<TPrev>> prevOperationResult, Func<OperationResult<TPrev>, OperationResult<TNext>> nextOperation)
             => (await prevOperationResult)
                 .Continue(nextOperation);
 
-        public static async Task<IOperationResult> ContinueAsync(this Task<IOperationResult> prevOperationResult, Task<IOperationResult> nextOperationResult)
+        public static async Task<OperationResult> ContinueAsync(this Task<OperationResult> prevOperationResult, Task<OperationResult> nextOperationResult)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperationResult);
 
-        public static async Task<IOperationResult> ContinueAsync(this Task<IOperationResult> prevOperationResult, AsyncFunc<IOperationResult> nextOperation)
+        public static async Task<OperationResult> ContinueAsync(this Task<OperationResult> prevOperationResult, AsyncFunc<OperationResult> nextOperation)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperation);
 
-        public static async Task<IOperationResult> ContinueAsync(this Task<IOperationResult> prevOperationResult, AsyncFunc<IOperationResult, IOperationResult> nextOperation)
+        public static async Task<OperationResult> ContinueAsync(this Task<OperationResult> prevOperationResult, AsyncFunc<OperationResult, OperationResult> nextOperation)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperation);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TNext>(this Task<IOperationResult> prevOperationResult, Task<IOperationResult<TNext>> nextOperationResult)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TNext>(this Task<OperationResult> prevOperationResult, Task<OperationResult<TNext>> nextOperationResult)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperationResult);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TNext>(this Task<IOperationResult> prevOperationResult, AsyncFunc<IOperationResult<TNext>> nextOperation)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TNext>(this Task<OperationResult> prevOperationResult, AsyncFunc<OperationResult<TNext>> nextOperation)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperation);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TNext>(this Task<IOperationResult> prevOperationResult, AsyncFunc<IOperationResult, IOperationResult<TNext>> nextOperation)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TNext>(this Task<OperationResult> prevOperationResult, AsyncFunc<OperationResult, OperationResult<TNext>> nextOperation)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperation);
 
-        public static async Task<IOperationResult> ContinueAsync<TPrev>(this Task<IOperationResult<TPrev>> prevOperationResult, Task<IOperationResult> nextOperationResult)
+        public static async Task<OperationResult> ContinueAsync<TPrev>(this Task<OperationResult<TPrev>> prevOperationResult, Task<OperationResult> nextOperationResult)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperationResult);
 
-        public static async Task<IOperationResult> ContinueAsync<TPrev>(this Task<IOperationResult<TPrev>> prevOperationResult, AsyncFunc<IOperationResult> nextOperation)
+        public static async Task<OperationResult> ContinueAsync<TPrev>(this Task<OperationResult<TPrev>> prevOperationResult, AsyncFunc<OperationResult> nextOperation)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperation);
 
-        public static async Task<IOperationResult> ContinueAsync<TPrev>(this Task<IOperationResult<TPrev>> prevOperationResult, AsyncFunc<IOperationResult<TPrev>, IOperationResult> nextOperation)
+        public static async Task<OperationResult> ContinueAsync<TPrev>(this Task<OperationResult<TPrev>> prevOperationResult, AsyncFunc<OperationResult<TPrev>, OperationResult> nextOperation)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperation);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<IOperationResult<TPrev>> prevOperationResult, Task<IOperationResult<TNext>> nextOperationResult)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<OperationResult<TPrev>> prevOperationResult, Task<OperationResult<TNext>> nextOperationResult)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperationResult);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<IOperationResult<TPrev>> prevOperationResult, AsyncFunc<IOperationResult<TNext>> nextOperation)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<OperationResult<TPrev>> prevOperationResult, AsyncFunc<OperationResult<TNext>> nextOperation)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperation);
 
-        public static async Task<IOperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<IOperationResult<TPrev>> prevOperationResult, AsyncFunc<IOperationResult<TPrev>, IOperationResult<TNext>> nextOperation)
+        public static async Task<OperationResult<TNext>> ContinueAsync<TPrev, TNext>(this Task<OperationResult<TPrev>> prevOperationResult, AsyncFunc<OperationResult<TPrev>, OperationResult<TNext>> nextOperation)
             => await (await prevOperationResult)
                 .ContinueAsync(nextOperation);
     }

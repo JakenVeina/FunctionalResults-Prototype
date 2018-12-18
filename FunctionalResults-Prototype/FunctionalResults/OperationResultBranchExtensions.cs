@@ -5,7 +5,7 @@ namespace FunctionalResults
 {
     public static class OperationResultBranchExtensions
     {
-        public static IOperationResult Branch(this IOperationResult currentOperationResult, Action branchAction)
+        public static OperationResult Branch(this OperationResult currentOperationResult, Action branchAction)
         {
             branchAction.AssertNotNull(nameof(branchAction))
                 .Invoke();
@@ -13,7 +13,7 @@ namespace FunctionalResults
             return currentOperationResult;
         }
 
-        public static IOperationResult Branch(this IOperationResult currentOperationResult, Action<IOperationResult> branchAction)
+        public static OperationResult Branch(this OperationResult currentOperationResult, Action<OperationResult> branchAction)
         {
             branchAction.AssertNotNull(nameof(branchAction))
                 .Invoke(currentOperationResult.AssertNotNull(nameof(currentOperationResult)));
@@ -21,7 +21,7 @@ namespace FunctionalResults
             return currentOperationResult;
         }
 
-        public static IOperationResult<T> Branch<T>(this IOperationResult<T> currentOperationResult, Action branchAction)
+        public static OperationResult<T> Branch<T>(this OperationResult<T> currentOperationResult, Action branchAction)
         {
             branchAction.AssertNotNull(nameof(branchAction))
                 .Invoke();
@@ -29,7 +29,7 @@ namespace FunctionalResults
             return currentOperationResult;
         }
 
-        public static IOperationResult<T> Branch<T>(this IOperationResult<T> currentOperationResult, Action<IOperationResult<T>> branchAction)
+        public static OperationResult<T> Branch<T>(this OperationResult<T> currentOperationResult, Action<OperationResult<T>> branchAction)
         {
             branchAction.AssertNotNull(nameof(branchAction))
                 .Invoke(currentOperationResult.AssertNotNull(nameof(currentOperationResult)));
@@ -37,7 +37,7 @@ namespace FunctionalResults
             return currentOperationResult;
         }
 
-        public static async Task<IOperationResult> BranchAsync(this IOperationResult currentOperationResult, AsyncAction branchAction)
+        public static async Task<OperationResult> BranchAsync(this OperationResult currentOperationResult, AsyncAction branchAction)
         {
             await branchAction.AssertNotNull(nameof(branchAction))
                 .Invoke();
@@ -45,7 +45,7 @@ namespace FunctionalResults
             return currentOperationResult;
         }
 
-        public static async Task<IOperationResult> BranchAsync(this IOperationResult currentOperationResult, AsyncAction<IOperationResult> branchAction)
+        public static async Task<OperationResult> BranchAsync(this OperationResult currentOperationResult, AsyncAction<OperationResult> branchAction)
         {
             await branchAction.AssertNotNull(nameof(branchAction))
                 .Invoke(currentOperationResult.AssertNotNull(nameof(currentOperationResult)));
@@ -53,7 +53,7 @@ namespace FunctionalResults
             return currentOperationResult;
         }
 
-        public static async Task<IOperationResult<T>> BranchAsync<T>(this IOperationResult<T> currentOperationResult, AsyncAction branchAction)
+        public static async Task<OperationResult<T>> BranchAsync<T>(this OperationResult<T> currentOperationResult, AsyncAction branchAction)
         {
             await branchAction.AssertNotNull(nameof(branchAction))
                 .Invoke();
@@ -61,7 +61,7 @@ namespace FunctionalResults
             return currentOperationResult;
         }
 
-        public static async Task<IOperationResult<T>> BranchAsync<T>(this IOperationResult<T> currentOperationResult, AsyncAction<IOperationResult<T>> branchAction)
+        public static async Task<OperationResult<T>> BranchAsync<T>(this OperationResult<T> currentOperationResult, AsyncAction<OperationResult<T>> branchAction)
         {
             await branchAction.AssertNotNull(nameof(branchAction))
                 .Invoke(currentOperationResult.AssertNotNull(nameof(currentOperationResult)));
@@ -69,35 +69,35 @@ namespace FunctionalResults
             return currentOperationResult;
         }
 
-        public static async Task<IOperationResult> BranchAsync(this Task<IOperationResult> currentOperationResult, Action branchAction)
+        public static async Task<OperationResult> BranchAsync(this Task<OperationResult> currentOperationResult, Action branchAction)
             => (await currentOperationResult)
                 .Branch(branchAction);
 
-        public static async Task<IOperationResult> BranchAsync(this Task<IOperationResult> currentOperationResult, Action<IOperationResult> branchAction)
+        public static async Task<OperationResult> BranchAsync(this Task<OperationResult> currentOperationResult, Action<OperationResult> branchAction)
             => (await currentOperationResult)
                 .Branch(branchAction);
 
-        public static async Task<IOperationResult> BranchAsync(this Task<IOperationResult> currentOperationResult, AsyncAction branchAction)
+        public static async Task<OperationResult> BranchAsync(this Task<OperationResult> currentOperationResult, AsyncAction branchAction)
             => await (await currentOperationResult)
                 .BranchAsync(branchAction);
 
-        public static async Task<IOperationResult> BranchAsync(this Task<IOperationResult> currentOperationResult, AsyncAction<IOperationResult> branchAction)
+        public static async Task<OperationResult> BranchAsync(this Task<OperationResult> currentOperationResult, AsyncAction<OperationResult> branchAction)
             => await (await currentOperationResult)
                 .BranchAsync(branchAction);
 
-        public static async Task<IOperationResult<T>> BranchAsync<T>(this Task<IOperationResult<T>> currentOperationResult, Action branchAction)
+        public static async Task<OperationResult<T>> BranchAsync<T>(this Task<OperationResult<T>> currentOperationResult, Action branchAction)
             => (await currentOperationResult)
                 .Branch(branchAction);
 
-        public static async Task<IOperationResult<T>> BranchAsync<T>(this Task<IOperationResult<T>> currentOperationResult, Action<IOperationResult<T>> branchAction)
+        public static async Task<OperationResult<T>> BranchAsync<T>(this Task<OperationResult<T>> currentOperationResult, Action<OperationResult<T>> branchAction)
             => (await currentOperationResult)
                 .Branch(branchAction);
 
-        public static async Task<IOperationResult<T>> BranchAsync<T>(this Task<IOperationResult<T>> currentOperationResult, AsyncAction branchAction)
+        public static async Task<OperationResult<T>> BranchAsync<T>(this Task<OperationResult<T>> currentOperationResult, AsyncAction branchAction)
             => await (await currentOperationResult)
                 .BranchAsync(branchAction);
 
-        public static async Task<IOperationResult<T>> BranchAsync<T>(this Task<IOperationResult<T>> currentOperationResult, AsyncAction<IOperationResult<T>> branchAction)
+        public static async Task<OperationResult<T>> BranchAsync<T>(this Task<OperationResult<T>> currentOperationResult, AsyncAction<OperationResult<T>> branchAction)
             => await (await currentOperationResult)
                 .BranchAsync(branchAction);
     }

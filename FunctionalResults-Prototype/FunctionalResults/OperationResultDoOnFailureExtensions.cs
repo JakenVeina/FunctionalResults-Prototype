@@ -5,177 +5,177 @@ namespace FunctionalResults
 {
     public static class OperationResultDoOnFailureExtensions
     {
-        public static IOperationResult DoOnFailure(this IOperationResult primaryOperationResult, Func<IOperationResult> secondaryOperation)
+        public static OperationResult DoOnFailure(this OperationResult primaryOperationResult, Func<OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhen(x => x.IsFailure,
                     secondaryOperation);
 
-        public static IOperationResult DoOnFailure(this IOperationResult primaryOperationResult, Func<IOperationError, IOperationResult> secondaryOperation)
-            => primaryOperationResult
-                .DoWhen(x => x.IsFailure,
-                    x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
-                        .Invoke(x.Error));
-
-        public static IOperationResult DoOnFailure<TSecondary>(this IOperationResult primaryOperationResult, Func<IOperationResult<TSecondary>> secondaryOperation)
-            => primaryOperationResult
-                .DoWhen(x => x.IsFailure,
-                    secondaryOperation);
-
-        public static IOperationResult DoOnFailure<TSecondary>(this IOperationResult primaryOperationResult, Func<IOperationError, IOperationResult<TSecondary>> secondaryOperation)
+        public static OperationResult DoOnFailure(this OperationResult primaryOperationResult, Func<IOperationError, OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhen(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static IOperationResult<TPrimary> DoOnFailure<TPrimary>(this IOperationResult<TPrimary> primaryOperationResult, Func<IOperationResult> secondaryOperation)
+        public static OperationResult DoOnFailure<TSecondary>(this OperationResult primaryOperationResult, Func<OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhen(x => x.IsFailure,
                     secondaryOperation);
 
-        public static IOperationResult<TPrimary> DoOnFailure<TPrimary>(this IOperationResult<TPrimary> primaryOperationResult, Func<IOperationError, IOperationResult> secondaryOperation)
-            => primaryOperationResult
-                .DoWhen(x => x.IsFailure,
-                    x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
-                        .Invoke(x.Error));
-
-        public static IOperationResult<TPrimary> DoOnFailure<TPrimary, TSecondary>(this IOperationResult<TPrimary> primaryOperationResult, Func<IOperationResult<TSecondary>> secondaryOperation)
-            => primaryOperationResult
-                .DoWhen(x => x.IsFailure,
-                    secondaryOperation);
-
-        public static IOperationResult<TPrimary> DoOnFailure<TPrimary, TSecondary>(this IOperationResult<TPrimary> primaryOperationResult, Func<IOperationError, IOperationResult<TSecondary>> secondaryOperation)
+        public static OperationResult DoOnFailure<TSecondary>(this OperationResult primaryOperationResult, Func<IOperationError, OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhen(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult> DoOnFailureAsync(this IOperationResult primaryOperationResult, AsyncFunc<IOperationResult> secondaryOperation)
+        public static OperationResult<TPrimary> DoOnFailure<TPrimary>(this OperationResult<TPrimary> primaryOperationResult, Func<OperationResult> secondaryOperation)
+            => primaryOperationResult
+                .DoWhen(x => x.IsFailure,
+                    secondaryOperation);
+
+        public static OperationResult<TPrimary> DoOnFailure<TPrimary>(this OperationResult<TPrimary> primaryOperationResult, Func<IOperationError, OperationResult> secondaryOperation)
+            => primaryOperationResult
+                .DoWhen(x => x.IsFailure,
+                    x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
+                        .Invoke(x.Error));
+
+        public static OperationResult<TPrimary> DoOnFailure<TPrimary, TSecondary>(this OperationResult<TPrimary> primaryOperationResult, Func<OperationResult<TSecondary>> secondaryOperation)
+            => primaryOperationResult
+                .DoWhen(x => x.IsFailure,
+                    secondaryOperation);
+
+        public static OperationResult<TPrimary> DoOnFailure<TPrimary, TSecondary>(this OperationResult<TPrimary> primaryOperationResult, Func<IOperationError, OperationResult<TSecondary>> secondaryOperation)
+            => primaryOperationResult
+                .DoWhen(x => x.IsFailure,
+                    x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
+                        .Invoke(x.Error));
+
+        public static Task<OperationResult> DoOnFailureAsync(this OperationResult primaryOperationResult, AsyncFunc<OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult> DoOnFailureAsync(this IOperationResult primaryOperationResult, AsyncFunc<IOperationError, IOperationResult> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync(this OperationResult primaryOperationResult, AsyncFunc<IOperationError, OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult> DoOnFailureAsync<TSecondary>(this IOperationResult primaryOperationResult, AsyncFunc<IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync<TSecondary>(this OperationResult primaryOperationResult, AsyncFunc<OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult> DoOnFailureAsync<TSecondary>(this IOperationResult primaryOperationResult, AsyncFunc<IOperationError, IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync<TSecondary>(this OperationResult primaryOperationResult, AsyncFunc<IOperationError, OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this IOperationResult<TPrimary> primaryOperationResult, AsyncFunc<IOperationResult> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this OperationResult<TPrimary> primaryOperationResult, AsyncFunc<OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this IOperationResult<TPrimary> primaryOperationResult, AsyncFunc<IOperationError, IOperationResult> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this OperationResult<TPrimary> primaryOperationResult, AsyncFunc<IOperationError, OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this IOperationResult<TPrimary> primaryOperationResult, AsyncFunc<IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this OperationResult<TPrimary> primaryOperationResult, AsyncFunc<OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this IOperationResult<TPrimary> primaryOperationResult, AsyncFunc<IOperationError, IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this OperationResult<TPrimary> primaryOperationResult, AsyncFunc<IOperationError, OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult> DoOnFailureAsync(this Task<IOperationResult> primaryOperationResult, Func<IOperationResult> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync(this Task<OperationResult> primaryOperationResult, Func<OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult> DoOnFailureAsync(this Task<IOperationResult> primaryOperationResult, Func<IOperationError, IOperationResult> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync(this Task<OperationResult> primaryOperationResult, Func<IOperationError, OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult> DoOnFailureAsync(this Task<IOperationResult> primaryOperationResult, AsyncFunc<IOperationResult> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync(this Task<OperationResult> primaryOperationResult, AsyncFunc<OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult> DoOnFailureAsync(this Task<IOperationResult> primaryOperationResult, AsyncFunc<IOperationError, IOperationResult> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync(this Task<OperationResult> primaryOperationResult, AsyncFunc<IOperationError, OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult> DoOnFailureAsync<TSecondary>(this Task<IOperationResult> primaryOperationResult, Func<IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync<TSecondary>(this Task<OperationResult> primaryOperationResult, Func<OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult> DoOnFailureAsync<TSecondary>(this Task<IOperationResult> primaryOperationResult, Func<IOperationError, IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync<TSecondary>(this Task<OperationResult> primaryOperationResult, Func<IOperationError, OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult> DoOnFailureAsync<TSecondary>(this Task<IOperationResult> primaryOperationResult, AsyncFunc<IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync<TSecondary>(this Task<OperationResult> primaryOperationResult, AsyncFunc<OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult> DoOnFailureAsync<TSecondary>(this Task<IOperationResult> primaryOperationResult, AsyncFunc<IOperationError, IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult> DoOnFailureAsync<TSecondary>(this Task<OperationResult> primaryOperationResult, AsyncFunc<IOperationError, OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this Task<IOperationResult<TPrimary>> primaryOperationResult, Func<IOperationResult> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this Task<OperationResult<TPrimary>> primaryOperationResult, Func<OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this Task<IOperationResult<TPrimary>> primaryOperationResult, Func<IOperationError, IOperationResult> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this Task<OperationResult<TPrimary>> primaryOperationResult, Func<IOperationError, OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this Task<IOperationResult<TPrimary>> primaryOperationResult, AsyncFunc<IOperationResult> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this Task<OperationResult<TPrimary>> primaryOperationResult, AsyncFunc<OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this Task<IOperationResult<TPrimary>> primaryOperationResult, AsyncFunc<IOperationError, IOperationResult> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary>(this Task<OperationResult<TPrimary>> primaryOperationResult, AsyncFunc<IOperationError, OperationResult> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this Task<IOperationResult<TPrimary>> primaryOperationResult, Func<IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this Task<OperationResult<TPrimary>> primaryOperationResult, Func<OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this Task<IOperationResult<TPrimary>> primaryOperationResult, Func<IOperationError, IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this Task<OperationResult<TPrimary>> primaryOperationResult, Func<IOperationError, OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
                         .Invoke(x.Error));
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this Task<IOperationResult<TPrimary>> primaryOperationResult, AsyncFunc<IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this Task<OperationResult<TPrimary>> primaryOperationResult, AsyncFunc<OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     secondaryOperation);
 
-        public static Task<IOperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this Task<IOperationResult<TPrimary>> primaryOperationResult, AsyncFunc<IOperationError, IOperationResult<TSecondary>> secondaryOperation)
+        public static Task<OperationResult<TPrimary>> DoOnFailureAsync<TPrimary, TSecondary>(this Task<OperationResult<TPrimary>> primaryOperationResult, AsyncFunc<IOperationError, OperationResult<TSecondary>> secondaryOperation)
             => primaryOperationResult
                 .DoWhenAsync(x => x.IsFailure,
                     x => secondaryOperation.AssertNotNull(nameof(secondaryOperation))
